@@ -1,0 +1,2 @@
+/my/path/to/image1/T1_right.nii.gz
+/my/path/to/image2/T1_right.nii.gz
