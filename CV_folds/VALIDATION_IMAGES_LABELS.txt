@@ -1,0 +1,2 @@
+/my/path/to/image1/label.nii.gz
+/my/path/to/image2/label.nii.gz
