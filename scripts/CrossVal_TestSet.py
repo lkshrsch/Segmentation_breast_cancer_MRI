@@ -13,7 +13,7 @@ import nibabel as nib
 import pandas as pd
 import matplotlib.pyplot as plt
 import sys
-sys.path.append('/home/deeperthought/Projects/MultiPriors_MSKCC/scripts/')
+sys.path.append('path/to/scripts/')
 from lib import *
 from scipy.ndimage.measurements import label
 
@@ -405,23 +405,18 @@ def HalfMax_MaxSeed(pred, MAX_THRESHOLD_FACTOR, SEED=True):
     return mach_thr
 #%%
 
-PATH_MODELS = '/home/deeperthought/Projects/MultiPriors_MSKCC/models/Patch_training/'
+PATH_MODELS = 'path/to/models/Patch_training/'
 
 INPUT = 107
 N_PATCHES = 2
 
-TEST_DATA_PATH = '/media/deeperthought/DATA2/DATA/Test_Malignants_Full_Slice_Patches/'
+TEST_DATA_PATH = 'path/to/Test_Malignants_Full_Slice_Patches/'
 
 data = os.listdir(TEST_DATA_PATH)    
 data = [x.split('_VOTE')[0] for x in data if 'VOTE' in x]
 
 
-remove = ['MSKCC_16-328_1_04021_20060805_r',
-            'MSKCC_16-328_1_00804_20021013_l',
-            'MSKCC_16-328_1_00590_20020809_r',
-            'MSKCC_16-328_1_02471_20070814_r',
-            'MSKCC_16-328_1_00565_20020702_r',
-            'MSKCC_16-328_1_03718_20060421_l']
+remove = []
 
 
 data = [x for x in data if x not in remove]
@@ -436,7 +431,7 @@ N = len(data)/2
 from Unet_3D_Class import Generalised_dice_coef_multilabel2, dice_coef_multilabel_bin0, dice_coef_multilabel_bin1
 from tensorflow.keras.optimizers import Adam
 
-OUTPUT_PATH = '/home/deeperthought/Projects/MultiPriors_MSKCC/models/Patch_training/best_models/CrossVal_Test/'
+OUTPUT_PATH = 'path/to/models/Patch_training/best_models/CrossVal_Test/'
      
 for MODE in [ 'AND', 'VOTE', 'OR']:
 
@@ -517,7 +512,7 @@ for MODE in [ 'AND', 'VOTE', 'OR']:
         df = pd.DataFrame(columns=['scanID', 'M_before_vs_GT1', 'M_before_vs_GT2', 'M_before_vs_GT3', 'M_before_vs_GT4', 'M_vs_GT1', 'M_vs_GT2', 'M_vs_GT3', 'M_vs_GT4'])
         X_test, Y_test, test_scanIDs = load_data_test(test, range(0, len(test)), MODE, 507)
         
-        OUTPUT_PRED_PATH = '/home/deeperthought/Projects/MultiPriors_MSKCC/models/Patch_training/best_models/CrossVal_Test/RESULTS/'
+        OUTPUT_PRED_PATH = 'path/to/models/Patch_training/best_models/CrossVal_Test/RESULTS/'
         for iii in range(len(X_test)):
             print(iii)
             VOTE234 = Y_test[iii,0]
