@@ -7,10 +7,6 @@ Created on Thu May 10 17:36:27 2018
 """
 
 
-
-    #configFile = '/home/hirsch/Documents/projects/brainSegmentation/DeepPriors_package/configFiles/configFiles_stroke/configFile0_DeepMedic_Dice_loss.py'
-    #workingDir = '/home/hirsch/Documents/projects/brainSegmentation/DeepPriors_package/'
-
 if __name__ == "__main__":
 
     import warnings
